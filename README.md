@@ -255,4 +255,54 @@ CREATE TABLE Octroyer(
         ,CONSTRAINT Octroyer_Type_entites_FK FOREIGN KEY (id_type) REFERENCES Type_entites(id_type)
         ,CONSTRAINT Octroyer_Droits0_FK FOREIGN KEY (id_droit) REFERENCES Droits(id_droit)
 )ENGINE=InnoDB;
-# ScriptDBprojet
+
+
+#-------------------------------------------------------------
+# Test d'une table associative
+ je cree 3 types de postes et ensuite je donne le rang programmeur a l'user dont l'iD est 1
+        et le rang 3 a l'user 2
+        INSERT sert a rentrer les valeurs en DUR
+
+#--------------------------------------------------------------
+INSERT INTO Type_entites 
+VALUES (1,'programmeur');
+
+INSERT INTO Type_entites 
+VALUES (2,'administateur');
+
+INSERT INTO Type_entites 
+VALUES (3,'membre');
+
+INSERT INTO Classer
+VALUES (1 , 1);
+
+INSERT INTO Classer
+VALUES (3 , 2);
+
+
+#------------------------------------------------------------
+# Je recherche (SELECT) tout element (*) du tableau entité 
+        possedant la qualité est programmeur
+        Les jointures permettent d'unir les differents tableaux ayant des liens logiques 
+        cela permet de tester les clés secondaires
+
+
+
+        second test je recherche les membres de base
+#------------------------------------------------------------
+
+SELECT * FROM entites 
+INNER JOIN classer ON entites.id_entite = classer.id_entite
+INNER JOIN type_entites ON type_entites.id_type = classer.id_type
+WHERE type_entites.qualite = 'programmeur';
+
+SELECT * FROM entites 
+INNER JOIN classer ON entites.id_entite = classer.id_entite
+INNER JOIN type_entites ON type_entites.id_type = classer.id_type
+WHERE type_entites.qualite = 'membre';
+
+
+
+
+
+
