@@ -5,7 +5,7 @@ USE permet de se positionner sur la base de données
 ce type de champ entre  dièses est un champ pour les remarques
 #------------------------------------------------------------
 
-
+bite
 CREATE DATABASE dbsite CHARACTER SET 'utf8';
 USE dbsite ;
 
